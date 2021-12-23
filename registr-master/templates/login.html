@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form action="" method="post" autocomplete="off">
+    <p>
+        <label for="username">Username</label>
+        {% if error and user_exist %}
+        <input type="text" name="username" style="border: 1.5px solid red">
+        {% else %}
+        <input type="text" name="username">
+        {% endif %}
+    </p>
+    <p>
+        <label for="password">Password</label>
+        {% if error and password_exist %}
+        <input type="password" name="password" style="border: 1.5px solid red">
+        {% else %}
+        <input type="password" name="password">
+        {% endif %}
+    </p>
+    <p>
+        <input type="submit" value="login" name="login">
+        <input type="submit" value="registration" name="registration">
+    </p>
+    <font color="red">
+        {% if error %}
+        {% if password_exist and user_exist %}
+        <p>Please enter your login and password</p>
+        {% elif password_exist %}
+        <p>Please enter your password</p>
+        {% elif user_exist %}
+        <p>Please enter your login</p>
+        {% else %}
+        <p>Your login or password is incorrect. Please try again</p>
+        {% endif %}
+        {% endif %}
+    </font>
+</form>
+
+</body>
+</html>
